@@ -22,11 +22,6 @@ def scores():
     rows = []
     dataFrame = pd.read_csv("scores.csv")
     dataFrame.sort_values(["score"],axis=0, ascending=False,inplace=True,na_position='first')
-
-  #  with open('scores.csv', 'r') as csvfile:
-   #     reader = csv.reader(csvfile)
-    #    data = sorted(reader, key=operator.itemgetter(1), reverse=True)    
-     #   for row in data:
-      #      rows.append(row)
+    dataFrame.insert(0, 'Ranking', range(1, 1 + len(dataFrame)))
 
     return render_template('scores.html', tables=[dataFrame.to_html(classes="table table-striped",index=False).replace('border="1"','border="0"').replace('<tr style="text-align: right;">', '<tr>')], titles=[''])
