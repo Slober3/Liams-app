@@ -1,6 +1,6 @@
 from flask import Flask, render_template,request, redirect
 from flask_bootstrap import Bootstrap
-import csv
+import csv,operator
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -21,6 +21,7 @@ def scores():
     rows = []
     with open('scores.csv', 'r') as csvfile:
         reader = csv.reader(csvfile)
-        for row in reader:
+        data = sorted(reader, key=operator.itemgetter(0), reverse=True)    
+        for row in data:
             rows.append(row)
     return render_template('scores.html', rows=rows)
