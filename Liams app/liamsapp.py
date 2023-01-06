@@ -21,7 +21,7 @@ def submit():
 def scores():
     rows = []
     dataFrame = pd.read_csv("scores.csv")
-    dataFrame.sort_values(["score"],axis=0, ascending=False,inplace=True,na_position='first')
+    dataFrame.sort_values(["Score"],axis=0, ascending=False,inplace=True,na_position='first')
     dataFrame.insert(0, 'Ranking', range(1, 1 + len(dataFrame)))
 
     return render_template('scores.html', tables=[dataFrame.to_html(classes="table table-striped",index=False).replace('border="1"','border="0"').replace('<tr style="text-align: right;">', '<tr>')], titles=[''])
