@@ -2,8 +2,8 @@ name: Push to Docker
 on: [push]
 jobs:
   build-and-push:
-    name: Build and deploy
     runs-on: ubuntu-latest
+    name: Build and deploy
     steps:
       - name: Checkout
       - uses: actions/checkout@v2
