@@ -10,7 +10,6 @@ def submit():
     score = request.args['score']
     name = request.args['name']
 
-    # Save the score and name to a database or file, or process the data as needed
     with open('scores.csv', 'a', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow([name, score])
