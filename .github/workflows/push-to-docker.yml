@@ -1,0 +1,23 @@
+name: Push to Docker
+on: [push]
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and push image
+        uses: actions/setup-python@v1
+        with:
+            python-version: "3.7"
+      - name: Install Dependencies
+        run: python3.7 -m pip install flask flask_bootstrap
+      - name: docker build and push
+        run: docker build -t my-image .
+      - name: docker build and push
+        run: docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
+      - name: docker build and push
+        run: docker tag my-image:latest my-image:${{ github.sha }}
+      - name: docker build and push
+        run: docker push my-image:latest
+      - name: docker build and push
+        run: docker push my-image:${{ github.sha }}
