@@ -14,6 +14,6 @@ jobs:
       - name: docker Login
         run: docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
       - name: docker build
-        run: docker build . -t ${{ secrets.DOCKER_USERNAME }}/my-image:latest
+        run: docker build "./Liams app" -t ${{ secrets.DOCKER_USERNAME }}/my-image:latest
       - name: docker push
         run: docker push ${{ secrets.DOCKER_USERNAME }}/my-image:latest
