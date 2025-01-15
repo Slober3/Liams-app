@@ -8,9 +8,9 @@ jobs:
       - name: Build and push image
         uses: actions/setup-python@v1
         with:
-            python-version: "3.7"
+            python-version: "3.9"
       - name: Install Dependencies
-        run: python3.7 -m pip install flask flask_bootstrap
+        run: python3.9 -m pip install flask flask_bootstrap
       - name: docker Login
         run: docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
       - name: docker build
